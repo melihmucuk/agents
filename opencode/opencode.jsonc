@@ -1,0 +1,237 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "opencode",
+  "autoupdate": true,
+  "instructions": [
+    ".github/copilot-instructions.md",
+    ".github/instructions/*.md"
+  ],
+  "model": "opencode/big-pickle",
+  "small_model": "opencode/grok-code",
+  "agent": {
+    "ask": {
+      "model": "openai/gpt-5.1",
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": false
+      }
+    },
+    "plan": {
+      "model": "openai/gpt-5.1-high",
+      "tools": {
+        "edit": false,
+        "write": false,
+        "patch": false
+      }
+    },
+    "build": {
+      "model": "openai/gpt-5.1-codex-mini-high",
+      "tools": {
+        "chrome-devtools": true
+      }
+    },
+    "general": {
+      "model": "opencode/big-pickle",
+      "tools": {
+        "edit": false,
+        "write": false,
+        "patch": false
+      }
+    },
+    "explore": {
+      "model": "opencode/big-pickle",
+      "tools": {
+        "edit": false,
+        "write": false,
+        "patch": false
+      }
+    }
+  },
+  "provider": {
+    "opencode": {
+      "models": {
+        "GPT-5-1-High": {
+          "id": "gpt-5.1",
+          "options": {
+            "reasoningEffort": "high",
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"],
+            "store": false
+          }
+        },
+        "GPT-5-1-Low": {
+          "id": "gpt-5.1",
+          "options": {
+            "reasoningEffort": "low",
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"],
+            "store": false
+          }
+        },
+        "GPT-5-1-Codex-High": {
+          "id": "gpt-5.1-codex",
+          "options": {
+            "reasoningEffort": "high",
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"],
+            "store": false
+          }
+        },
+        "claude-opus-4-5": {
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 16000
+            }
+          }
+        },
+        "claude-sonnet-4-5": {
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 16000
+            }
+          }
+        },
+        "claude-haiku-4-5": {
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 16000
+            }
+          }
+        }
+      }
+    },
+    "openai": {
+      "models": {
+        "gpt-5.1-high": {
+          "id": "gpt-5.1",
+          "options": {
+            "reasoningEffort": "high",
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"],
+            "store": false
+          }
+        },
+        "gpt-5.1": {
+          "options": {
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"],
+            "store": false
+          }
+        },
+        "gpt-5.1-low": {
+          "id": "gpt-5.1",
+          "options": {
+            "reasoningEffort": "low",
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"],
+            "store": false
+          }
+        },
+        "gpt-5.1-codex-high": {
+          "id": "gpt-5.1-codex",
+          "options": {
+            "reasoningEffort": "high",
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"],
+            "store": false
+          }
+        },
+        "gpt-5.1-codex": {
+          "options": {
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"],
+            "store": false
+          }
+        },
+        "gpt-5.1-codex-mini-high": {
+          "id": "gpt-5.1-codex-mini",
+          "options": {
+            "reasoningEffort": "high",
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"],
+            "store": false
+          }
+        },
+        "gpt-5.1-codex-mini": {
+          "options": {
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"],
+            "store": false
+          }
+        }
+      }
+    },
+    "anthropic": {
+      "models": {
+        "claude-opus-4-5": {
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 16000
+            }
+          }
+        },
+        "claude-sonnet-4-5": {
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 16000
+            }
+          }
+        },
+        "claude-haiku-4-5": {
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 16000
+            }
+          }
+        }
+      }
+    }
+  },
+  "tools": {
+    "chrome-devtools": false
+  },
+  "mcp": {
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest"],
+      "enabled": true
+    }
+  },
+  "tui": {
+    "scroll_speed": 5
+  },
+  "keybinds": {
+    "leader": "ctrl+space",
+    "session_child_cycle": "<leader>right",
+    "session_child_cycle_reverse": "<leader>left"
+  },
+  "permission": {
+    "edit": "allow",
+    "webfetch": "allow",
+    "bash": {
+      "*": "allow",
+      "rm": "ask",
+      "rmdir": "ask",
+      "delete": "ask",
+      "mv": "ask",
+      "sudo": "ask",
+      "chmod": "ask",
+      "chown": "ask",
+      "dd": "ask",
+      "mkfs": "ask",
+      "fdisk": "ask",
+      "git add": "ask",
+      "git commit": "ask",
+      "git push": "ask",
+      "git reset": "ask",
+      "git clean": "ask"
+    }
+  }
+}
